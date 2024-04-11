@@ -228,6 +228,17 @@
   // Get the form element
   const form = document.querySelector('.form-container');
 
+  // Check if data in local storage and prefill the form
+  const firstName = localStorage.getItem('firstName');
+  const lastName = localStorage.getItem('lastName');
+  const gender = localStorage.getItem('gender');
+
+  if (firstName && lastName && gender) {
+    form.querySelector('input[placeholder="First Name"]').value = firstName;
+    form.querySelector('input[placeholder="Last Name"]').value = lastName;
+    form.querySelector(`input[value="${gender}"`).checked = true;
+  }
+
   // Add an event listener for the 'submit' event
   form.addEventListener('submit', (event) => {
     // Prevent the default form submission behavior
@@ -247,6 +258,11 @@
     document.getElementById('anrede').innerText = gender.split(',')[0] + ' ' + lastName;
     document.getElementById('anrede-en').innerText = gender.split(',')[1] + ' ' + lastName;
     document.getElementById('fullname').innerText = firstName + ' ' + lastName;
+
+    // Save information to local storage
+    localStorage.setItem('firstName', firstName);
+    localStorage.setItem('lastName', lastName);
+    localStorage.setItem('gender', gender)
     // Close the overlay
     form.parentElement.style.display = 'none';
   });
