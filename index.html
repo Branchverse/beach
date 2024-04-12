@@ -48,7 +48,7 @@
           <td class="sp1">
             Buchungsnr:<div class="entext">Booking No</div>
           </td>
-          <td colspan="2">31607-037</td>
+          <td colspan="2">31607-0<span id="ticketnumber1"></span></td>
         </tr>
         <tr>
           <td class="sp1">
@@ -118,7 +118,7 @@
           alt="Barcode">
         <b class="headb">Teilnahmeticket</b>
         <div class="topspace">
-          31607-037<br>S-HdM
+          31607-0<span id="ticketnumber2"><br>S-HdM
         </div>
       </div>
       <table class="ktable">
@@ -238,6 +238,9 @@
     form.querySelector('input[placeholder="Last Name"]').value = lastName;
     form.querySelector(`input[value="${gender}"`).checked = true;
   }
+  const randomNumber = Math.floor(Math.random() * 90) + 10;
+  document.getElementById('ticketnumber1').innerText = randomNumber;
+  document.getElementById('ticketnumber2').innerText = randomNumber;
 
   // Add an event listener for the 'submit' event
   form.addEventListener('submit', (event) => {
